@@ -187,8 +187,7 @@ const styles = StyleSheet.create({
      borderWidth:1,
      marginTop:20,
      padding:10,
-     color : '#ffff',
-     '::-webkit-input-placeholder': { color: '#ffff' }
+     color : '#ffff'
    },
    registerButton:{
      width:200,
