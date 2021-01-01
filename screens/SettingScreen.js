@@ -58,7 +58,9 @@ export default class SettingScreen extends Component{
   render(){
     return(
       <View style={styles.container} >
+         <View style={{flex:1}}>
         <MyHeader title="Settings" navigation={this.props.navigation}/>
+        </View>
         <View style={styles.formContainer}>
             <TextInput style={styles.formTextInput} placeholder ={"First Name"} maxLength ={8} onChangeText={(text)=>{ this.setState({firstName: text})}} value ={this.state.firstName} />                                       
             <TextInput style={styles.formTextInput} placeholder ={"Last Name"} maxLength ={8} onChangeText={(text)=>{this.setState({lastName: text})}} value ={this.state.lastName} />                           
@@ -78,9 +80,9 @@ export default class SettingScreen extends Component{
 
 const styles = StyleSheet.create({
   container : {
-    flex:1,
-    alignItems: 'center',
-    justifyContent: 'center'
+   flex:1,
+   // alignItems: 'center',
+    //justifyContent: 'center'
   },
   formContainer:{
     flex:1,
