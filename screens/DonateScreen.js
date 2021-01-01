@@ -25,7 +25,7 @@ export default class DonateScreen extends Component{
     keyExtractor = (item,index) => index.toString()
     
     renderItem=({item,i})=>{
-     return(<ListItem key={i} title={item.item_name} subtitle={item.reason} titleStyle={{color:'black', fontWeight:'bold'}} rightElement={<TouchableOpacity><Text>Donate</Text></TouchableOpacity>} bottomDivider /> ) 
+     return(<ListItem key={i} title={item.item_name} subtitle={item.reason} titleStyle={{color:'black', fontWeight:'bold'}} rightElement={<TouchableOpacity onPress={()=>{this.props.navigation.navigate('RecieverDetails',{"details":item}); console.log(item)}}><Text>Donate</Text></TouchableOpacity>} bottomDivider /> )                                                      
     }
     componentDidMount(){
         this.getAllRequests()
@@ -51,3 +51,5 @@ export default class DonateScreen extends Component{
         )
       }
     }
+
+ 
