@@ -2,15 +2,15 @@ import React,{Component} from 'react'
 import {Text,View} from 'react-native'
 import {Icon} from 'react-native-elements'
 import {createBottomTabNavigator} from 'react-navigation-tabs'
-
+import {StackNavigator} from './StackNavigator'
 import DonateScreen from '../screens/DonateScreen'
 import RequestScreen from '../screens/RequestScreen'
 
 export const TabNavigator =  createBottomTabNavigator({
 Donate :{
-    screen : DonateScreen,
+    screen : StackNavigator,
         navigationOptions:{
-           tabBarIcon : <Icon name="hand-holding-medical" type="font-awesome" size={25} /> , 
+           tabBarIcon : <Icon name="at" type="font-awesome" size={25} /> , 
            tabBarLabel : 'Donate'
        }
 },
