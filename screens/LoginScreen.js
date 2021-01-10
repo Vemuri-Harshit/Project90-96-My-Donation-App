@@ -81,7 +81,7 @@ export default class LoginScreen extends Component{
               <View style={styles.modalBackButton}> 
 
                 <TouchableOpacity style={styles.cancelButton} onPress={()=>this.setState({"isModalVisible":false})}>
-                <Text style={{color:'#ff5722'}}>Cancel</Text>
+                <Text style={{color:'#000000'}}>Cancel</Text>
                 </TouchableOpacity>
 
               </View>
@@ -104,14 +104,14 @@ export default class LoginScreen extends Component{
           }
         <View style={{justifyContent:'center', alignItems:'center'}}>
           
-          <Text style={styles.title}>Donation App(Name to Be decided)</Text>
+          <Text style={styles.title}>Donation</Text>
 
         </View>
 
         <View>
 
           <TextInput style={styles.loginBox} placeholder="abc@example.com" keyboardType ='email-address' onChangeText={(text)=>{this.setState({emailId: text})}}/>                                  
-          <TextInput style={styles.loginBox} secureTextEntry = {true} placeholder="enter Password" onChangeText={(text)=>{ this.setState({password: text})}}/>
+          <TextInput style={styles.loginBox} secureTextEntry = {true} placeholder="Enter Password" onChangeText={(text)=>{ this.setState({password: text})}}/>
       
         <TouchableOpacity style={[styles.button,{marginBottom:20, marginTop:20}]} onPress = {()=>{this.userLogin(this.state.emailId, this.state.password)}}>                       
            <Text style={styles.buttonText}>Login</Text>
@@ -130,7 +130,7 @@ export default class LoginScreen extends Component{
 const styles = StyleSheet.create({
     container:{
      flex:1,
-     backgroundColor:'#008080',
+     backgroundColor:'#D3D3D3',
      alignItems: 'center',
      justifyContent: 'center'
    },
@@ -143,17 +143,17 @@ const styles = StyleSheet.create({
      fontSize:65,
      fontWeight:'300',
      paddingBottom:10,
-     color : '#000080'
+     color : '#000000'
    },
    loginBox:{
      width: 300,
      height: 40,
      borderBottomWidth: 1.5,
-     borderColor : '#000080',
+     borderColor : '#000000',
      fontSize: 20,
      margin:10,
      paddingLeft:10,
-     color : '#ffff'
+     color : '#000000'
    },
    KeyboardAvoidingView:{
      flex:1,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
      justifyContent:'center',
      alignSelf:'center',
      fontSize:30,
-     color:'#ffff',
+     color:'#000000',
      margin:50
    },
    modalContainer:{
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
      borderRadius:20,
      justifyContent:'center',
      alignItems:'center',
-     backgroundColor:"#000080",
+     backgroundColor:"#F0AFDD",
      marginRight:30,
      marginLeft : 30,
      marginTop:80,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
      marginTop:30
    },
    registerButtonText:{
-     color:'#ff5722',
+     color:'#000000',
      fontSize:15,
      fontWeight:'bold'
    },
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
      justifyContent:'center',
      alignItems:'center',
      borderRadius:25,
-     backgroundColor:"#000080",
+     backgroundColor:"#F0AFDD",
      shadowColor: "#000",
      shadowOffset: {
         width: 0,
@@ -229,8 +229,8 @@ const styles = StyleSheet.create({
      padding: 10
    },
    buttonText:{
-     color:'#ffff',
-     fontWeight:'200',
+     color:'#000000',
+     fontWeight:"100",
      fontSize:20
    }
   })

@@ -9,13 +9,14 @@ export default class DonateScreen extends Component{
      constructor(){
         super()
          this.state={
-            allRequests : []      
+            allRequests : [],
+          
          }
          this.requestRef = null
      }
 
      getAllRequests=()=>{
-         this.requestRef = db.collection('requested_items')
+         this.requestRef = db.collection('requested_items').where('request_status','==','requested')
          .onSnapshot((snapshot)=>{
              var allRequests =snapshot.docs.map(document => document.data())
              this.setState({allRequests: allRequests})
@@ -25,7 +26,7 @@ export default class DonateScreen extends Component{
     keyExtractor = (item,index) => index.toString()
     
     renderItem=({item,i})=>{
-     return(<ListItem key={i} title={item.item_name} subtitle={item.reason} titleStyle={{color:'black', fontWeight:'bold'}} rightElement={<TouchableOpacity onPress={()=>{this.props.navigation.navigate('RecieverDetails',{"details":item}); console.log(item)}}><Text>Donate</Text></TouchableOpacity>} bottomDivider /> )                                                      
+     return(<ListItem key={i} title={item.item_name} subtitle={item.reason} titleStyle={{color:'black', fontWeight:'bold'}} rightElement={<TouchableOpacity   onPress={()=>{this.props.navigation.navigate('RecieverDetails',{"details":item}); }}><Text>Donate</Text></TouchableOpacity>} bottomDivider /> )                                                      
     }
     componentDidMount(){
         this.getAllRequests()
@@ -38,12 +39,12 @@ export default class DonateScreen extends Component{
       render(){
         return(
           <View style={{flex:1}}>
-            <MyHeader title="Donate Books"/>
+            <MyHeader title="Donate Items" navigation ={this.props.navigation}/>
             <View style={{flex:1}}>
               {
                 this.state.allRequests.length === 0
 
-                ?( <Text style={{ fontSize: 20}}>List Of All Requested Books</Text>  )
+                ?( <Text style={{ fontSize: 20}}>List Of All Requested Items</Text>  )
                 :( <FlatList keyExtractor={this.keyExtractor} data={this.state.allRequests} renderItem={this.renderItem}/> )       
               }
             </View>

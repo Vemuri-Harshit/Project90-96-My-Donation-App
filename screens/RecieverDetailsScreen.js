@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import {View,Text,StyleSheet,TouchableOpacity} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity,ScrollView} from 'react-native';
 import{Card,Header,Icon} from 'react-native-elements';
 import firebase from 'firebase';
 
@@ -18,8 +18,10 @@ export default class RecieverDetailsScreen extends Component{
       recieverName    : '',
       recieverContact : '',
       recieverAddress : '',
-      recieverRequestDocId : ''
+      recieverRequestDocId : '',
+      disabled: false
     }
+    console.log(this.state.itemName, this.state.reason)
   }
 
 
@@ -29,7 +31,7 @@ export default class RecieverDetailsScreen extends Component{
     .then(snapshot=>{
       snapshot.forEach(doc=>{
         this.setState({
-          recieverName    : doc.data().first_name,
+          recieverName    : doc.data().first_name + " " + doc.data().last_name,
           recieverContact : doc.data().contact,
           recieverAddress : doc.data().address,
         })
@@ -57,11 +59,24 @@ export default class RecieverDetailsScreen extends Component{
 
   updateItemStatus=()=>{
     db.collection('donated_items').add({
-      "item_name"           : this.state.bookName,
+      "item_name"           : this.state.itemName,
       "request_id"          : this.state.requestId,
       "requested_by"        : this.state.recieverName,
       "donor_id"            : this.state.userId,
       "request_status"      :  "Donor Interested"
+    })
+  }
+
+  addNotification=()=>{
+    var message = this.state.userName + " has shown interest in donating your item"
+    db.collection("all_notifications").add({
+      "targeted_user_id" : this.state.recieverId,
+      "donor_id"         : this.state.userId,
+      "request_id"       : this.state.requestId,
+      "item_name"        : this.state.itemName,
+      "date"             : firebase.firestore.FieldValue.serverTimestamp(),
+      "notification_status" : "unread",
+      "message"          : message
     })
   }
 
@@ -73,7 +88,7 @@ export default class RecieverDetailsScreen extends Component{
 
     render(){
       return(
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <View style={{flex:0.1}}>
             <Header
               leftComponent ={<Icon name='arrow-left' type='feather' color='#696969'  onPress={() => this.props.navigation.goBack()}/>}
@@ -114,14 +129,17 @@ export default class RecieverDetailsScreen extends Component{
           </View>
 
           <View style={styles.buttonContainer}>
-            {
+          {
               this.state.recieverId !== this.state.userId
               ?(
                 <TouchableOpacity
                     style={styles.button}
+                    disabled = {this.state.disabled}
                     onPress={()=>{
                       this.updateItemStatus()
+                      this.addNotification()
                       this.props.navigation.navigate('MyDonations')
+                      this.setState({disabled: true})
                     }}>
                   <Text>I want to Donate</Text>
                 </TouchableOpacity>
@@ -129,7 +147,7 @@ export default class RecieverDetailsScreen extends Component{
               : null
             }
           </View>
-        </View>
+        </ScrollView>
       )
     }
 
@@ -138,7 +156,7 @@ export default class RecieverDetailsScreen extends Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+  //  flex:1,
   },
   buttonContainer : {
     flex:0.3,
