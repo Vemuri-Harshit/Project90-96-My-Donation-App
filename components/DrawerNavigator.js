@@ -7,14 +7,18 @@ import firebase from 'firebase';
 import {TabNavigator} from './TabNavigator'
 import SideBarMenu from './SideBarMenu'
 import SettingScreen from '../screens/SettingScreen'
-import MyDonationsScreen from '../screens/MyDonationsScreen'
+import MyDonationScreen from '../screens/MyDonationScreen'
+import NotificationScreen from '../screens/NotificationScreen'
 
 export const DrawerNavigator = createDrawerNavigator({
     Home:{
         screen:TabNavigator
     },
     MyDonations:{
-        screen:MyDonationsScreen
+        screen:MyDonationScreen
+    },
+    Notification:{
+        screen: NotificationScreen
     },
     Settings:{
         screen: SettingScreen

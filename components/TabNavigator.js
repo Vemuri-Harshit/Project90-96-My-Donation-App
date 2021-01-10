@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs'
 import {StackNavigator} from './StackNavigator'
 import DonateScreen from '../screens/DonateScreen'
 import RequestScreen from '../screens/RequestScreen'
+import MyRecievedItemsScreen from '../screens/MyRecievedItemsScreen'
 
 export const TabNavigator =  createBottomTabNavigator({
 Donate :{
@@ -20,6 +21,13 @@ Request :{
     navigationOptions:{
         tabBarIcon : <Icon name="shopping-basket" type="font-awesome" size={25} /> , 
         tabBarLabel : 'Request'
+    }
+},
+
+Recieved :{
+    screen : MyRecievedItemsScreen,
+    navigationOptions :{
+        tabBarIcon: <Icon name="fa-reply" type ="font-awesome" size ={25}/>
     }
 }
 
