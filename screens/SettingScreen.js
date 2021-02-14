@@ -58,6 +58,7 @@ export default class SettingScreen extends Component{
     return(
       <View>
         <MyHeader title="Settings" navigation ={this.props.navigation}/>
+        <KeyboardAvoidingView>
         <View style={styles.formContainer}>
 
             <TextInput style={styles.formTextInput} placeholder ={"First Name"} maxLength ={8} onChangeText={(text)=>{this.setState({firstName: text})}} value ={this.state.firstName}/>
@@ -70,6 +71,7 @@ export default class SettingScreen extends Component{
             </TouchableOpacity>
 
         </View>
+        </KeyboardAvoidingView>
       </View>
     )
   }

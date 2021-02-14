@@ -11,7 +11,7 @@ export const TabNavigator =  createBottomTabNavigator({
 Donate :{
     screen : StackNavigator,
         navigationOptions:{
-           tabBarIcon : <Icon name="at" type="font-awesome" size={25} /> , 
+           tabBarIcon : <Icon name="heart" type="font-awesome" size={25} /> , 
            tabBarLabel : 'Donate'
        }
 },
@@ -27,7 +27,7 @@ Request :{
 Recieved :{
     screen : MyRecievedItemsScreen,
     navigationOptions :{
-        tabBarIcon: <Icon name="fa-reply" type ="font-awesome" size ={25}/>
+        tabBarIcon: <Icon name= "share" type ="font-awesome" size ={25}/>
     }
 }
 

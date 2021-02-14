@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Text,View,KeyboardAvoidingView,TextInput,TouchableOpacity,StyleSheet} from 'react-native'
+import {Text,View,KeyboardAvoidingView,TextInput,TouchableOpacity,StyleSheet,ScrollView} from 'react-native'
 import db from '../config'
 import firebase from 'firebase';
 import MyHeader from '../components/MyHeader'
@@ -41,7 +41,8 @@ export default class RequestScreen extends Component{
         return(
             <View style = {{flex:1}}>
                <MyHeader title = "Request Items" navigation ={this.props.navigation}/>
-               <KeyboardAvoidingView style ={styles.keyBoardStyle}>
+               <ScrollView>
+               <KeyboardAvoidingView >
 
                     <View>
                         <TextInput style ={styles.formTextInput} placeholder = "Item" onChangeText = {(text)=>{this.setState({item: text})}} value = {this.state.item}/>
@@ -53,6 +54,7 @@ export default class RequestScreen extends Component{
                     </View>
 
                </KeyboardAvoidingView>
+               </ScrollView>
             </View>
         )
     }

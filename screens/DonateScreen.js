@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, FlatList,TouchableOpacity,Image } from 'react-native';
+import { View, StyleSheet, Text, FlatList,TouchableOpacity,Image,KeyboardAvoidingView,ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements'
 import firebase from 'firebase';
 import db from '../config'
@@ -38,17 +38,19 @@ export default class DonateScreen extends Component{
 
       render(){
         return(
-          <View style={{flex:1}}>
+          <KeyboardAvoidingView style={{flex:1}}>
             <MyHeader title="Donate Items" navigation ={this.props.navigation}/>
+            <ScrollView>
             <View style={{flex:1}}>
               {
                 this.state.allRequests.length === 0
 
-                ?( <Text style={{ fontSize: 20}}>List Of All Requested Items</Text>  )
+                ?( <Text style={{ fontSize: 20,alignItems:'center'}}>List Of All Requested Items</Text>  )
                 :( <FlatList keyExtractor={this.keyExtractor} data={this.state.allRequests} renderItem={this.renderItem}/> )       
               }
             </View>
-          </View>
+            </ScrollView>
+          </KeyboardAvoidingView>
         )
       }
     }

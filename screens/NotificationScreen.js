@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, FlatList,Text } from 'react-native';
+import { StyleSheet, View, FlatList,Text,ScrollView } from 'react-native';
 import { ListItem, Icon } from 'react-native-elements';
 import firebase from 'firebase';
 import MyHeader from '../components/MyHeader';
@@ -67,6 +67,7 @@ export default class NotificationScreen extends Component{
           <MyHeader title={"Notifications"} navigation={this.props.navigation}/>
         </View>
         <View style={{flex:0.9}}>
+          <ScrollView>
           {
             this.state.allNotifications.length === 0
             ?(
@@ -78,6 +79,7 @@ export default class NotificationScreen extends Component{
               <SwipeableFlatlist allNotifications={this.state.allNotifications}/>
             )
           }
+          </ScrollView>
         </View>
       </View>
     )

@@ -135,6 +135,7 @@ export default class MyDonationScreen extends Component {
        <View style={{flex:1}}>
          <MyHeader navigation={this.props.navigation} title="My Donations"/>
          <View style={{flex:1}}>
+           <ScrollView>
            {
              this.state.allDonations.length === 0
              ?(
@@ -150,6 +151,7 @@ export default class MyDonationScreen extends Component {
                />
              )
            }
+           </ScrollView>
          </View>
        </View>
      )

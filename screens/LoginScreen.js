@@ -96,16 +96,15 @@ export default class LoginScreen extends Component{
  render(){
     return(
       <View style={styles.container}>
+
         <View style={{justifyContent: 'center',alignItems: 'center'}}>
 
         </View>
-          {
-            this.showModal()
-          }
-        <View style={{justifyContent:'center', alignItems:'center'}}>
-          
-          <Text style={styles.title}>Donation</Text>
 
+          {this.showModal()}
+
+        <View style={{justifyContent:'center', alignItems:'center'}}>
+            <Text style={styles.title}>Donation</Text>
         </View>
 
         <View>
@@ -113,13 +112,8 @@ export default class LoginScreen extends Component{
           <TextInput style={styles.loginBox} placeholder="abc@example.com" keyboardType ='email-address' onChangeText={(text)=>{this.setState({emailId: text})}}/>                                  
           <TextInput style={styles.loginBox} secureTextEntry = {true} placeholder="Enter Password" onChangeText={(text)=>{ this.setState({password: text})}}/>
       
-        <TouchableOpacity style={[styles.button,{marginBottom:20, marginTop:20}]} onPress = {()=>{this.userLogin(this.state.emailId, this.state.password)}}>                       
-           <Text style={styles.buttonText}>Login</Text>
-         </TouchableOpacity>
-
-         <TouchableOpacity style={styles.button} onPress={()=>this.setState({ isModalVisible:true})}>
-           <Text style={styles.buttonText}>SignUp</Text>
-         </TouchableOpacity>
+          <TouchableOpacity style={[styles.button,{marginBottom:20, marginTop:20}]} onPress = {()=>{this.userLogin(this.state.emailId, this.state.password)}}><Text style={styles.buttonText}>Login</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={()=>this.setState({ isModalVisible:true})}><Text style={styles.buttonText}>SignUp</Text></TouchableOpacity>
 
       </View>
     </View>
